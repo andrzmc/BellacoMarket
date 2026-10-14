@@ -21,16 +21,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     reactNativeDelegate = delegate
     reactNativeFactory = factory
 
-    window = UIWindow(frame: UIScreen.main.bounds)
-
-    factory.startReactNative(
-      withModuleName: "BellacoMarket",
-      in: window,
-      launchOptions: launchOptions
-    )
-
     return true
   }
+
+  // MARK: UISceneSession Lifecycle
+  func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+      return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+  }
+
+  func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
+  }
+}
+
+class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+    var window: UIWindow?
+
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        let window = UIWindow(windowScene: windowScene)
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            appDelegate.reactNativeFactory?.startReactNative(
+                withModuleName: "BellacoMarket",
+                in: window,
+                launchOptions: nil
+            )
+        }
+        self.window = window
+        window.makeKeyAndVisible()
+    }
 }
 
 class ReactNativeDelegate: RCTDefaultReactNativeFactoryDelegate {
