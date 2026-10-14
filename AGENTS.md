@@ -63,15 +63,39 @@ Every new file or change MUST belong to one of the following approved locations:
   - Example: `import { CardUiProps } from '@/models/interfaces/ui';`
   - Example: `import { CardUiStyles } from '@/styles/components/ui';`
 
-## 4. LIST OF FORBIDDEN ANTI-PATTERNS
+## 4. COMPONENT & CODING STANDARDS
+- **Typing with `FC`:** ALWAYS import and use `{ FC } from 'react'`. NEVER use `React.FC`.
+- **Internal Props Destructuring:** NEVER destructure props in the function parameter signature. ALWAYS destructure props inside the component body for readability:
+  ```tsx
+  // ✅ CORRECT:
+  export const MyComponentUi: FC<MyComponentUiProps> = props => {
+    const { children, variant = 'default', style, ...rest } = props;
+    return <View style={[styles.base, style]} {...rest}>{children}</View>;
+  };
+
+  // ❌ FORBIDDEN:
+  export const MyComponentUi: React.FC<MyComponentUiProps> = ({ children, ...rest }) => ...;
+  ```
+
+## 5. TESTING STANDARDS (`__tests__/`)
+- ALWAYS use `@testing-library/react-native` (v14+ / React 19).
+- `render` is asynchronous: ALWAYS use `await render(<ComponentUi ... />);`.
+- Query elements using `screen.getByText`, `screen.getByTestId`, etc.
+- 🚫 NEVER use the deprecated `react-test-renderer`, `ReactTestRendererJSON`, or `ReactTestRenderer.act`.
+
+## 6. LIST OF FORBIDDEN ANTI-PATTERNS
 1. ❌ NEVER create `src/components/ui/<component>/styles.ts`. Styles belong in `src/styles/components/ui.ts`.
 2. ❌ NEVER create `src/components/ui/<component>/types.ts`. Props belong in `src/models/interfaces/ui.ts`.
 3. ❌ NEVER nest components in arbitrary subfolders like `src/components/ui/card/components/item.tsx`.
 4. ❌ NEVER create subfolders inside `src/services/` other than `api`, `graphql`, `hooks`, or `utilities`.
 5. ❌ NEVER delete or move `.gitkeep` files.
+6. ❌ NEVER use `React.FC` or destructure props in the parameter signature.
+7. ❌ NEVER use `react-test-renderer` in unit tests.
 
-## 5. MANDATORY PROTOCOL BEFORE GENERATING OR EDITING CODE
-Before creating any file, you must mentally answer:
+## 7. MANDATORY PROTOCOL BEFORE GENERATING OR EDITING CODE
+Before creating or modifying any file, you must mentally answer:
 1. Which category does it belong to according to the authorized `.gitkeep` anchors?
 2. Does it respect the suffix naming convention (`Ui`, `Layout`, etc.)?
 3. Are its interfaces and styles located in `src/models/` and `src/styles/` respectively?
+4. Does the component use `{ FC } from 'react'` and internal props destructuring?
+5. Do tests use `@testing-library/react-native` with `await render(...)`?
