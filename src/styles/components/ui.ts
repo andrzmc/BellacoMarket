@@ -79,3 +79,33 @@ export const buttonUiStyles = StyleSheet.create({
     fontWeight: '600',
   },
 });
+
+export const CardUiStyles = StyleSheet.create({
+  container: {
+    overflow: 'hidden',
+    backgroundColor: '#FFFFFF',
+    padding: 16,
+    borderRadius: 12,
+    gap: 10,
+    shadowColor: '#000000',
+    shadowOpacity: 0.05,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 8,
+    elevation: 2,
+  },
+  shape_rounded: {
+    borderRadius: 16,
+  },
+  shape_flat: {
+    borderRadius: 0,
+  },
+  disabled: {
+    opacity: 0.5,
+  },
+  header: {
+    marginBottom: 12,
+  },
+  footer: {
+    marginTop: 12,
+  },
+});

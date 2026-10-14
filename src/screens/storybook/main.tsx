@@ -1,4 +1,5 @@
 import { ButtonUi } from '@/components/ui/button';
+import { CardUi } from '@/components/ui/card';
 import { TypographyUi } from '@/components/ui/typography';
 import React from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
@@ -19,15 +20,7 @@ const MainStoryBookScreen = () => {
         </TypographyUi>
 
         {/* Typography Section */}
-        <View style={styles.section}>
-          <TypographyUi
-            size="subtitle"
-            weight="bold"
-            color="info"
-            style={styles.sectionTitle}
-          >
-            TypographyUi - Tamaños
-          </TypographyUi>
+        <CardUi heading="TypographyUi - Tamaños">
           <TypographyUi size="title" weight="bold">
             Title (Bold)
           </TypographyUi>
@@ -36,34 +29,18 @@ const MainStoryBookScreen = () => {
           </TypographyUi>
           <TypographyUi size="paragraph">Paragraph (Normal)</TypographyUi>
           <TypographyUi size="small">Small text helper</TypographyUi>
-        </View>
+        </CardUi>
 
-        <View style={styles.section}>
-          <TypographyUi
-            size="subtitle"
-            weight="bold"
-            color="info"
-            style={styles.sectionTitle}
-          >
-            TypographyUi - Colores Semánticos
-          </TypographyUi>
+        <CardUi heading="TypographyUi - Colores Semánticos">
           <TypographyUi color="normal">Color Normal</TypographyUi>
           <TypographyUi color="info">Color Info</TypographyUi>
           <TypographyUi color="success">Color Success</TypographyUi>
           <TypographyUi color="warning">Color Warning</TypographyUi>
           <TypographyUi color="error">Color Error</TypographyUi>
-        </View>
+        </CardUi>
 
         {/* Button Section */}
-        <View style={styles.section}>
-          <TypographyUi
-            size="subtitle"
-            weight="bold"
-            color="info"
-            style={styles.sectionTitle}
-          >
-            ButtonUi - Variantes de Fondo
-          </TypographyUi>
+        <CardUi heading="ButtonUi - Variantes de Fondo">
           <View style={styles.buttonList}>
             <ButtonUi text="Variant Normal" variant="normal" />
             <ButtonUi text="Variant Info" variant="info" />
@@ -71,17 +48,9 @@ const MainStoryBookScreen = () => {
             <ButtonUi text="Variant Warning" variant="warning" />
             <ButtonUi text="Variant Error" variant="error" />
           </View>
-        </View>
+        </CardUi>
 
-        <View style={styles.section}>
-          <TypographyUi
-            size="subtitle"
-            weight="bold"
-            color="info"
-            style={styles.sectionTitle}
-          >
-            ButtonUi - Estados y Contenido
-          </TypographyUi>
+        <CardUi heading="ButtonUi - Estados y Contenido">
           <View style={styles.buttonList}>
             <ButtonUi text="Botón Deshabilitado" variant="info" disabled />
             <ButtonUi variant="normal" style={styles.customButton}>
@@ -90,7 +59,7 @@ const MainStoryBookScreen = () => {
               </TypographyUi>
             </ButtonUi>
           </View>
-        </View>
+        </CardUi>
       </ScrollView>
     </SafeAreaView>
   );
@@ -108,23 +77,6 @@ const styles = StyleSheet.create({
   headerTitle: {
     textAlign: 'center',
     marginBottom: 8,
-  },
-  section: {
-    backgroundColor: '#FFFFFF',
-    padding: 16,
-    borderRadius: 12,
-    gap: 10,
-    shadowColor: '#000000',
-    shadowOpacity: 0.05,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 8,
-    elevation: 2,
-  },
-  sectionTitle: {
-    marginBottom: 6,
-    borderBottomWidth: 1,
-    borderBottomColor: '#E5E5EA',
-    paddingBottom: 6,
   },
   buttonList: {
     gap: 12,

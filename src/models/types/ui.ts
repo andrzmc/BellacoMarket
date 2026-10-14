@@ -10,3 +10,5 @@ export type TypographyColor =
   | 'warning';
 
 export type ButtonVariant = TypographyColor;
+
+export type CardShape = 'rounded' | 'flat';

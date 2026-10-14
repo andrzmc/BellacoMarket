@@ -4,10 +4,12 @@ import {
   TextProps,
   TextStyle,
   TouchableOpacityProps,
+  ViewProps,
   ViewStyle,
 } from 'react-native';
 import {
   ButtonVariant,
+  CardShape,
   TypographyColor,
   TypographySize,
   TypographyWeight,
@@ -28,3 +30,22 @@ export interface ButtonUiProps extends TouchableOpacityProps {
   disabled?: boolean;
   style?: StyleProp<ViewStyle>;
 }
+
+export interface CardUiProps extends ViewProps {
+  children: ReactNode;
+  header?: ReactNode;
+  footer?: ReactNode;
+  heading?: string;
+  subheading?: string;
+  padding?: { top?: number; right?: number; left?: number; bottom?: number };
+  shape?: CardShape;
+  disabled?: boolean;
+  onPress?: TouchableOpacityProps['onPress'];
+}
+
+export interface WrapperUiProps extends ViewProps {
+  children: ReactNode;
+  disabled?: boolean;
+  onPress?: TouchableOpacityProps['onPress'];
+}
+
