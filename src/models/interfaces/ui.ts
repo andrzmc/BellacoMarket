@@ -1,6 +1,13 @@
 import { ReactNode } from 'react';
-import { StyleProp, TextProps, TextStyle } from 'react-native';
 import {
+  StyleProp,
+  TextProps,
+  TextStyle,
+  TouchableOpacityProps,
+  ViewStyle,
+} from 'react-native';
+import {
+  ButtonVariant,
   TypographyColor,
   TypographySize,
   TypographyWeight,
@@ -12,4 +19,12 @@ export interface TypographyUiProps extends Omit<TextProps, 'style'> {
   weight?: TypographyWeight;
   color?: TypographyColor;
   style?: StyleProp<TextStyle>;
+}
+
+export interface ButtonUiProps extends TouchableOpacityProps {
+  children?: ReactNode;
+  text?: string;
+  variant?: ButtonVariant;
+  disabled?: boolean;
+  style?: StyleProp<ViewStyle>;
 }

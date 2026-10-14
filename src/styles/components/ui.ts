@@ -45,3 +45,37 @@ export const typographyUiStyles = StyleSheet.create({
     color: '#FF9500',
   },
 });
+
+export const buttonUiStyles = StyleSheet.create({
+  base: {
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+  },
+  variant_normal: {
+    backgroundColor: '#1C1C1E',
+  },
+  variant_info: {
+    backgroundColor: '#007AFF',
+  },
+  variant_success: {
+    backgroundColor: '#34C759',
+  },
+  variant_error: {
+    backgroundColor: '#FF3B30',
+  },
+  variant_warning: {
+    backgroundColor: '#FF9500',
+  },
+  disabled: {
+    opacity: 0.5,
+  },
+  text: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+});

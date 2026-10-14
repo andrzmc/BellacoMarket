@@ -8,3 +8,5 @@ export type TypographyColor =
   | 'success'
   | 'error'
   | 'warning';
+
+export type ButtonVariant = TypographyColor;
