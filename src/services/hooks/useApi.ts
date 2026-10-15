@@ -4,11 +4,12 @@ import {
 } from '@/models/interfaces/api';
 import { useCallback, useEffect, useState } from 'react';
 
-export const useApi = <T = unknown>(
+export const useApi = <T = unknown, R = T>(
   service: () => Promise<ApiInterceptorResponse<T>>,
+  interceptor?: (data: T) => R,
   autoFetch: boolean = true,
-): UseApiResult<T> => {
-  const [response, setResponse] = useState<ApiInterceptorResponse<T>>({
+): UseApiResult<R> => {
+  const [response, setResponse] = useState<ApiInterceptorResponse<R>>({
     data: null,
     error: null,
     loading: autoFetch,
@@ -17,9 +18,19 @@ export const useApi = <T = unknown>(
   const refetch = useCallback(async () => {
     setResponse(prev => ({ ...prev, loading: true }));
     const result = await service();
-    setResponse(result);
-    return result;
-  }, [service]);
+    const data =
+      interceptor && result.data
+        ? interceptor(result.data)
+        : (result.data as unknown as R);
+
+    const formattedResult: ApiInterceptorResponse<R> = {
+      ...result,
+      data,
+    };
+
+    setResponse(formattedResult);
+    return formattedResult;
+  }, [service, interceptor]);
 
   useEffect(() => {
     if (autoFetch) {

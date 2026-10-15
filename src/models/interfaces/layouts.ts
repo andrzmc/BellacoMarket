@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 import { ViewProps } from 'react-native';
 import { ScreenLayoutAlignment } from '../types/layouts';
 import { BoxiconName } from '../types/ui';
+import { CatalogItem } from './templates';
 
 export interface ScreenLayoutProps extends ViewProps {
   children: ReactNode;
@@ -28,4 +29,8 @@ export interface IconTabBarLayoutProps {
 }
 
 export interface FloatTabBarLayoutProps extends BottomTabBarProps {}
+
+export interface MarketCardLayoutProps extends CatalogItem {}
+
+
 

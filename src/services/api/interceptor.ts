@@ -1,3 +1,4 @@
+import { API_RESPONSE_ERROR_MESSAGE_CONFIG } from '@/config/services/interceptor';
 import {
   ApiInterceptorOptions,
   ApiInterceptorResponse,
@@ -47,6 +48,44 @@ export const clearApiCache = (keyPattern?: string): void => {
   } else {
     memoryCache.clear();
   }
+};
+
+const sanitizeErrorMessage = (status: number, parsedData: any): string => {
+  if (parsedData && typeof parsedData === 'object') {
+    const candidate =
+      parsedData.message || parsedData.error || parsedData.detail;
+    if (typeof candidate === 'string') {
+      const trimmed = candidate.trim();
+      const isHtml =
+        /<\/?[a-z][\s\S]*>/i.test(trimmed) || trimmed.startsWith('<!');
+      const isTechnicalRouting = /^Cannot (GET|POST|PUT|DELETE|PATCH)/i.test(
+        trimmed,
+      );
+
+      if (
+        !isHtml &&
+        !isTechnicalRouting &&
+        trimmed.length > 0 &&
+        trimmed.length < 200
+      ) {
+        return trimmed;
+      }
+    }
+  }
+
+  if (API_RESPONSE_ERROR_MESSAGE_CONFIG[status]) {
+    return API_RESPONSE_ERROR_MESSAGE_CONFIG[status];
+  }
+
+  if (status >= 400 && status < 500) {
+    return 'We could not complete your request. Please try again.';
+  }
+
+  if (status >= 500) {
+    return 'Server error. Please try again in a few moments.';
+  }
+
+  return 'An unexpected error occurred. Please try again.';
 };
 
 export const ApiInterceptorService = async <T = unknown, TBody = unknown>(
@@ -140,18 +179,11 @@ export const ApiInterceptorService = async <T = unknown, TBody = unknown>(
     }
 
     if (!response.ok) {
-      const errorMessage =
-        (typeof parsedData === 'object' &&
-          (parsedData?.message || parsedData?.error)) ||
-        (typeof parsedData === 'string' && parsedData.length > 0
-          ? parsedData
-          : null) ||
-        response.statusText ||
-        `HTTP request failed with status ${response.status}`;
+      const errorMessage = sanitizeErrorMessage(response.status, parsedData);
 
       return {
         data: null,
-        error: String(errorMessage),
+        error: errorMessage,
         loading: false,
       };
     }
@@ -170,8 +202,15 @@ export const ApiInterceptorService = async <T = unknown, TBody = unknown>(
       loading: false,
     };
   } catch (err: unknown) {
-    const errorMessage =
-      err instanceof Error ? err.message : 'Network request failed';
+    let errorMessage =
+      'Unable to connect to the server. Please check your internet connection.';
+
+    if (err instanceof Error) {
+      if (err.name === 'AbortError') {
+        errorMessage =
+          'The request was canceled or timed out. Please try again.';
+      }
+    }
 
     return {
       data: null,
