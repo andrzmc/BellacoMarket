@@ -6,36 +6,36 @@ import { LoaderUiProps } from '@/models/interfaces/ui';
 import useSkin from '@/services/hooks/useSkin';
 import { LoaderUiStyles } from '@/styles/components/ui';
 
-const SIZE_MAP = {
-  small: {
-    containerSize: 0,
-    iconSize: 0,
-    shadowWidth: 200,
-    shadowHeight: 7,
-    bounceHeight: 10,
-    pulseSize: 64,
-  },
-  normal: {
-    containerSize: 68,
-    iconSize: 34,
-    shadowWidth: 52,
-    shadowHeight: 10,
-    bounceHeight: 14,
-    pulseSize: 90,
-  },
-  big: {
-    containerSize: 92,
-    iconSize: 46,
-    shadowWidth: 70,
-    shadowHeight: 13,
-    bounceHeight: 20,
-    pulseSize: 120,
-  },
-};
-
 export const LoaderUi: FC<LoaderUiProps> = props => {
   const { size = 'normal', text, style, ...rest } = props;
   const { skin } = useSkin();
+
+  const SIZE_MAP = {
+    small: {
+      containerSize: 0,
+      iconSize: 0,
+      shadowWidth: 200,
+      shadowHeight: 7,
+      bounceHeight: 10,
+      pulseSize: 64,
+    },
+    normal: {
+      containerSize: 68,
+      iconSize: 34,
+      shadowWidth: 52,
+      shadowHeight: 10,
+      bounceHeight: 14,
+      pulseSize: 90,
+    },
+    big: {
+      containerSize: 92,
+      iconSize: 46,
+      shadowWidth: 70,
+      shadowHeight: 13,
+      bounceHeight: 20,
+      pulseSize: 120,
+    },
+  };
 
   const config = SIZE_MAP[size] || SIZE_MAP.normal;
 
