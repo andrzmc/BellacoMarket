@@ -1,18 +1,21 @@
 import RootNavigation from '@/screens/home/navigation';
+import useSkin from '@/services/hooks/useSkin';
 import { NavigationContainer } from '@react-navigation/native';
 import React, { FC } from 'react';
 
 const NavigatorTemplate: FC = () => {
+  const { skin, isDarkMode } = useSkin();
+
   return (
     <NavigationContainer
       theme={{
         colors: {
-          background: '#f3f3f3',
-          primary: '#007AFF',
-          card: 'white',
-          text: '#1C1C1E',
-          border: '#1C1C1E',
-          notification: '#007AFF',
+          background: skin.background,
+          primary: skin.primary,
+          card: skin.primary,
+          text: skin.text.paragraph,
+          border: skin.primary,
+          notification: skin.primary,
         },
         fonts: {
           regular: {
@@ -32,7 +35,7 @@ const NavigatorTemplate: FC = () => {
             fontWeight: '900',
           },
         },
-        dark: false,
+        dark: isDarkMode,
       }}
     >
       <RootNavigation />

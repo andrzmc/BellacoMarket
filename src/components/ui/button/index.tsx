@@ -1,7 +1,9 @@
 import React, { FC } from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { ButtonUiProps } from '@/models/interfaces/ui';
 import { buttonUiStyles } from '@/styles/components/ui';
+import useSkin from '@/services/hooks/useSkin';
+import { TypographyUi } from '../typography';
 
 export const ButtonUi: FC<ButtonUiProps> = props => {
   const {
@@ -14,19 +16,29 @@ export const ButtonUi: FC<ButtonUiProps> = props => {
     ...rest
   } = props;
 
+  const { skin } = useSkin();
+
   return (
     <TouchableOpacity
       disabled={disabled}
       activeOpacity={activeOpacity}
       style={[
         buttonUiStyles.base,
-        buttonUiStyles[`variant_${variant}`],
         disabled && buttonUiStyles.disabled,
+        {
+          backgroundColor:
+            skin.text[variant !== 'normal' ? variant : 'paragraph'],
+        },
         style,
       ]}
       {...rest}
     >
-      {children ?? (text ? <Text style={buttonUiStyles.text}>{text}</Text> : null)}
+      {children ??
+        (text ? (
+          <TypographyUi weight="bold" color="inverted">
+            {text}
+          </TypographyUi>
+        ) : null)}
     </TouchableOpacity>
   );
 };

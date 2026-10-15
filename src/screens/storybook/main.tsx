@@ -7,7 +7,7 @@ import { StyleSheet } from 'react-native';
 
 const MainStoryBookScreen = () => {
   return (
-    <ScreenLayout header={{ title: 'BellacoMarket UI' }}>
+    <ScreenLayout header={{ title: 'BellacoMarket UI' }} scrollable>
       <CardUi heading="TypographyUi - Tamaños">
         <TypographyUi size="title" weight="bold">
           Title (Bold)

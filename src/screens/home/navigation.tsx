@@ -8,7 +8,7 @@ const RootNavigation = () => {
 
   return (
     <Stack.Navigator
-      initialRouteName="Main"
+      initialRouteName="StoryBook"
       screenOptions={{
         headerShown: false,
         gestureEnabled: true,

@@ -4,6 +4,7 @@ import { CardUiProps } from '@/models/interfaces/ui';
 import { CardUiStyles } from '@/styles/components/ui';
 import WrapperCardUi from './wrapper';
 import { TypographyUi } from '../typography';
+import useSkin from '@/services/hooks/useSkin';
 
 export const CardUi: FC<CardUiProps> = props => {
   const {
@@ -20,6 +21,8 @@ export const CardUi: FC<CardUiProps> = props => {
     ...rest
   } = props;
 
+  const { skin } = useSkin();
+
   const CARD_STYLE = [
     CardUiStyles.container,
     CardUiStyles[`shape_${shape}`],
@@ -29,6 +32,10 @@ export const CardUi: FC<CardUiProps> = props => {
       paddingRight: typeof padding?.right === 'number' ? padding.right : 20,
       paddingBottom: typeof padding?.bottom === 'number' ? padding.bottom : 20,
       paddingLeft: typeof padding?.left === 'number' ? padding.left : 20,
+    },
+    {
+      backgroundColor: skin.card.background,
+      shadowColor: skin.card.shadowColor,
     },
     style,
   ];

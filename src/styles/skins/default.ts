@@ -1,0 +1,58 @@
+import { SkinMode } from '@/models/interfaces/styles/skins';
+
+export const DefaultThemeStyle: SkinMode = {
+  light: {
+    primary: '#5B50EC',
+    secondary: '#F4F5F8',
+    tertiary: '#E5E7EB',
+    background: '#F8F9FA',
+    info: '#5B50EC',
+    warning: '#FFD027',
+    error: '#FA3E3E',
+    success: '#22C55E',
+    disabled: '#D1D5DB',
+    text: {
+      title: '#1A1D26',
+      subtitle: '#7E8494',
+      paragraph: '#424755',
+      inverted: '#FFFFFF',
+      link: '#5B50EC',
+      disabled: '#9CA3AF',
+      info: '#5B50EC',
+      warning: '#E5A100',
+      error: '#FA3E3E',
+      success: '#16A34A',
+    },
+    card: {
+      background: '#FFFFFF',
+      shadowColor: '#000000',
+    },
+  },
+  dark: {
+    primary: '#6D64F7',
+    secondary: '#1F222A',
+    tertiary: '#2E3342',
+    background: '#12141A',
+    info: '#6D64F7',
+    warning: '#FFD027',
+    error: '#FF5C5C',
+    success: '#34D399',
+    disabled: '#4B5162',
+    text: {
+      title: '#F9FAFB',
+      subtitle: '#9CA3AF',
+      paragraph: '#E5E7EB',
+      inverted: '#12141A',
+      link: '#857DF8',
+      disabled: '#6B7280',
+      info: '#857DF8',
+      warning: '#FFD027',
+      error: '#FF6B6B',
+      success: '#34D399',
+    },
+    card: {
+      background: '#1F222A',
+      shadowColor: '#000000',
+    },
+  },
+};
