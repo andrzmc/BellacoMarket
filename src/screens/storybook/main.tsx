@@ -2,10 +2,12 @@ import ScreenLayout from '@/components/layouts/screen';
 import { ButtonUi } from '@/components/ui/button';
 import { CardUi } from '@/components/ui/card';
 import { TypographyUi } from '@/components/ui/typography';
+import useSkin from '@/services/hooks/useSkin';
 import React from 'react';
-import { StyleSheet } from 'react-native';
 
 const MainStoryBookScreen = () => {
+  const { skin } = useSkin();
+
   return (
     <ScreenLayout header={{ title: 'BellacoMarket UI' }} scrollable>
       <CardUi heading="TypographyUi - Tamaños">
@@ -37,8 +39,11 @@ const MainStoryBookScreen = () => {
 
       <CardUi heading="ButtonUi - Estados y Contenido">
         <ButtonUi text="Botón Deshabilitado" variant="info" disabled />
-        <ButtonUi variant="normal" style={styles.customButton}>
-          <TypographyUi color="success" weight="bold">
+        <ButtonUi
+          variant="inverted"
+          style={{ borderWidth: 1, borderColor: skin.info }}
+        >
+          <TypographyUi color="info" weight="bold">
             ★ Botón con Children Personalizado ★
           </TypographyUi>
         </ButtonUi>
@@ -46,12 +51,5 @@ const MainStoryBookScreen = () => {
     </ScreenLayout>
   );
 };
-
-const styles = StyleSheet.create({
-  customButton: {
-    borderWidth: 1,
-    borderColor: '#34C759',
-  },
-});
 
 export default MainStoryBookScreen;

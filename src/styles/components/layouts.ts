@@ -6,6 +6,7 @@ export const ScreenLayoutStyles = StyleSheet.create({
   },
   scrollContent: {
     flexGrow: 1,
+    gap: 16,
   },
   alignment_top: {
     justifyContent: 'flex-start',
