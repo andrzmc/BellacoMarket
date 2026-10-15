@@ -7,7 +7,7 @@ const NavigatorTemplate: FC = () => {
     <NavigationContainer
       theme={{
         colors: {
-          background: 'white',
+          background: '#f3f3f3',
           primary: '#007AFF',
           card: 'white',
           text: '#1C1C1E',
