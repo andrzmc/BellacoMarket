@@ -10,11 +10,11 @@ const NavigatorTemplate: FC = () => {
     <NavigationContainer
       theme={{
         colors: {
-          background: skin.background,
+          background: 'transparent',
           primary: skin.primary,
-          card: skin.primary,
+          card: 'transparent',
           text: skin.text.paragraph,
-          border: skin.primary,
+          border: 'transparent',
           notification: skin.primary,
         },
         fonts: {

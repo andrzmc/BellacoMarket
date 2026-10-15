@@ -8,6 +8,8 @@ import {
   ViewStyle,
 } from 'react-native';
 import {
+  BoxiconName,
+  BoxiconVariant,
   ButtonVariant,
   CardShape,
   TypographyColor,
@@ -49,3 +51,12 @@ export interface WrapperUiProps extends ViewProps {
   onPress?: TouchableOpacityProps['onPress'];
 }
 
+export interface IconUiProps extends ViewProps {
+  name: BoxiconName;
+  variant?: BoxiconVariant;
+  size?: number;
+  color?: TypographyColor;
+  colorCode?: string;
+  disabled?: boolean;
+  onPress?: TouchableOpacityProps['onPress'];
+}
