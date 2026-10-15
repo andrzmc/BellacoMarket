@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { ButtonUiProps } from '@/models/interfaces/ui';
-import { buttonUiStyles } from '@/styles/components/ui';
+import { ButtonUiStyles } from '@/styles/components/ui';
 import useSkin from '@/services/hooks/useSkin';
 import { TypographyUi } from '../typography';
 
@@ -23,8 +23,8 @@ export const ButtonUi: FC<ButtonUiProps> = props => {
       disabled={disabled}
       activeOpacity={activeOpacity}
       style={[
-        buttonUiStyles.base,
-        disabled && buttonUiStyles.disabled,
+        ButtonUiStyles.container,
+        disabled && ButtonUiStyles.disabled,
         {
           backgroundColor:
             skin.text[variant !== 'normal' ? variant : 'paragraph'],

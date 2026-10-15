@@ -6,14 +6,15 @@ export const TypographyUiStyles = StyleSheet.create({
   ...TextWeightStyles,
 });
 
-export const buttonUiStyles = StyleSheet.create({
-  base: {
+export const ButtonUiStyles = StyleSheet.create({
+  container: {
     paddingVertical: 12,
-    paddingHorizontal: 20,
-    borderRadius: 8,
+    paddingHorizontal: 24,
+    borderRadius: 24,
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
+    alignSelf: 'flex-start',
   },
   disabled: {
     opacity: 0.5,
