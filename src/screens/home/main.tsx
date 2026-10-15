@@ -1,10 +1,10 @@
+import ScreenLayout from '@/components/layouts/screen';
 import { TypographyUi } from '@/components/ui/typography';
 import React from 'react';
-import { View } from 'react-native';
 
 const MainHomeScreen = () => {
   return (
-    <View>
+    <ScreenLayout header={{ title: 'Bellaco Market' }} scrollable>
       <TypographyUi
         size="title"
         weight="bold"
@@ -13,7 +13,7 @@ const MainHomeScreen = () => {
       >
         Home Screen
       </TypographyUi>
-    </View>
+    </ScreenLayout>
   );
 };
 

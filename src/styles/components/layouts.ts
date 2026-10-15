@@ -18,3 +18,55 @@ export const ScreenLayoutStyles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
 });
+
+export const FloatTabBarLayoutStyles = StyleSheet.create({
+  container: {
+    position: 'absolute',
+    alignSelf: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderRadius: 40,
+    padding: 6,
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.1,
+    shadowRadius: 16,
+    elevation: 10,
+    gap: 6,
+  },
+  tabItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 30,
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+  },
+  tabItemActive: {
+    paddingHorizontal: 20,
+    gap: 8,
+  },
+  iconWrapper: {
+    position: 'relative',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  badge: {
+    position: 'absolute',
+    top: -6,
+    right: -10,
+    minWidth: 16,
+    height: 16,
+    borderRadius: 8,
+    paddingHorizontal: 4,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  badgeText: {
+    fontSize: 10,
+    lineHeight: 12,
+  },
+  labelText: {
+    lineHeight: 16,
+  },
+});
+
