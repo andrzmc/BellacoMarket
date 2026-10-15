@@ -1,9 +1,10 @@
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
 import { ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import HeaderScreenLayout from './header';
 import { ScreenLayoutProps } from '@/models/interfaces/layouts';
 import { ScreenLayoutStyles } from '@/styles/components/layouts';
+import { BottomTabBarHeightContext } from '@react-navigation/bottom-tabs';
 
 const ScreenLayout: FC<ScreenLayoutProps> = props => {
   const {
@@ -17,14 +18,18 @@ const ScreenLayout: FC<ScreenLayoutProps> = props => {
     ...rest
   } = props;
 
+  const tabBarHeight = useContext(BottomTabBarHeightContext);
+  const basePadding = withPadding ? 20 : 0;
+  const paddingBottom = tabBarHeight ? tabBarHeight + 35 : basePadding;
+
   const SCREEN_STYLE = [
     scrollable
       ? ScreenLayoutStyles.scrollContent
       : ScreenLayoutStyles.container,
     ScreenLayoutStyles[`alignment_${alignment}`],
     {
-      paddingHorizontal: withPadding ? 20 : 0,
-      paddingBottom: withPadding ? 20 : 0,
+      paddingHorizontal: basePadding,
+      paddingBottom,
     },
   ];
 
