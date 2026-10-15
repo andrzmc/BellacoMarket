@@ -19,19 +19,19 @@ const NavigatorTemplate: FC = () => {
         },
         fonts: {
           regular: {
-            fontFamily: 'Roboto',
+            fontFamily: 'Montserrat-Regular',
             fontWeight: '400',
           },
           medium: {
-            fontFamily: 'Roboto',
+            fontFamily: 'Montserrat-Medium',
             fontWeight: '500',
           },
           bold: {
-            fontFamily: 'Roboto',
+            fontFamily: 'Montserrat-Bold',
             fontWeight: '700',
           },
           heavy: {
-            fontFamily: 'Roboto',
+            fontFamily: 'Montserrat-ExtraBold',
             fontWeight: '900',
           },
         },

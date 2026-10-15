@@ -1,37 +1,9 @@
 import { StyleSheet } from 'react-native';
+import { TextFontSizeStyles, TextWeightStyles } from '../global/text';
 
 export const TypographyUiStyles = StyleSheet.create({
-  size_title: {
-    fontSize: 28,
-    lineHeight: 34,
-    marginBottom: 12,
-  },
-  size_subtitle: {
-    fontSize: 20,
-    lineHeight: 28,
-    marginBottom: 8,
-  },
-  size_paragraph: {
-    fontSize: 16,
-    lineHeight: 24,
-    marginBottom: 4,
-  },
-  size_small: {
-    fontSize: 12,
-    lineHeight: 16,
-  },
-  weight_normal: {
-    fontFamily: 'Roboto',
-  },
-  weight_medium: {
-    fontFamily: 'Roboto',
-  },
-  weight_bold: {
-    fontFamily: 'Roboto',
-  },
-  weight_extrabold: {
-    fontFamily: 'Roboto',
-  },
+  ...TextFontSizeStyles,
+  ...TextWeightStyles,
 });
 
 export const buttonUiStyles = StyleSheet.create({
