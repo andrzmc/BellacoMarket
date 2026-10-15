@@ -35,3 +35,5 @@ export type BoxiconName =
   | BoxiconBrandsName;
 
 export type BoxiconVariant = 'basic' | 'filled' | 'brands';
+
+export type LoaderSize = 'big' | 'normal' | 'small';

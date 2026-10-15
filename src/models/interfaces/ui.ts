@@ -12,6 +12,7 @@ import {
   BoxiconVariant,
   ButtonVariant,
   CardShape,
+  LoaderSize,
   TypographyColor,
   TypographySize,
   TypographyWeight,
@@ -60,3 +61,9 @@ export interface IconUiProps extends ViewProps {
   disabled?: boolean;
   onPress?: TouchableOpacityProps['onPress'];
 }
+
+export interface LoaderUiProps extends ViewProps {
+  size?: LoaderSize;
+  text?: string;
+}
+
