@@ -27,6 +27,7 @@ export const TransformFakeStoreProductsToCatalogService = (
       tags: [product.category],
       image: product.image,
       amount: product.price,
+      count: product.rating.count,
     })),
   };
 };

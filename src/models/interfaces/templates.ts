@@ -7,6 +7,7 @@ export interface CatalogItem {
   color?: string;
   image?: string;
   amount?: number;
+  count?: number;
 }
 
 export interface CatalogResponse {
@@ -28,4 +29,8 @@ export interface FooterPaginatorTemplateProps {
   loading: boolean;
   catalog?: CatalogResponse;
   errorStatus?: string;
+}
+
+export interface ShoppingConfirmTemplateProps {
+  onClose?: () => void;
 }

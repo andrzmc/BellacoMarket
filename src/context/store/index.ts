@@ -11,15 +11,17 @@ import {
 } from 'redux-persist';
 import { settingsSlice } from './reducers/settings';
 import { ReduxStorageUtil } from '@/services/utilities/storage';
+import { marketSlice } from './reducers/market';
 
 const persistConfig = {
   key: 'root',
   storage: ReduxStorageUtil,
-  whitelist: ['settings'],
+  whitelist: ['settings', 'market'],
 };
 
 const rootReducer = combineReducers({
   settings: settingsSlice.reducer,
+  market: marketSlice.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

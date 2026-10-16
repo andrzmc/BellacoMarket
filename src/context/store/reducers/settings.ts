@@ -1,14 +1,15 @@
+import { SettingsStore } from '@/models/interfaces/context/store/reducers';
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { ColorSchemeName } from 'react-native';
 
-const initialState: { appareance: ColorSchemeName | null; skinName: string } = {
+const initialState: SettingsStore = {
   appareance: null,
   skinName: 'default',
 };
 
 export const settingsSlice = createSlice({
-  name: 'skin',
+  name: 'settings',
   initialState,
   reducers: {
     onChangeAppearance: (

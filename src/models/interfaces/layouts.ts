@@ -31,6 +31,3 @@ export interface IconTabBarLayoutProps {
 export interface FloatTabBarLayoutProps extends BottomTabBarProps {}
 
 export interface MarketCardLayoutProps extends CatalogItem {}
-
-
-

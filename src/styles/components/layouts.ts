@@ -113,3 +113,120 @@ export const MarketCardLayoutStyles = StyleSheet.create({
     alignSelf: 'auto',
   },
 });
+
+export const FavoriteCardLayoutStyles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 12,
+    gap: 12,
+  },
+  cover: {
+    width: 80,
+    height: 80,
+    borderRadius: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 6,
+  },
+  image: {
+    width: '100%',
+    height: '100%',
+  },
+  content: {
+    flex: 1,
+    gap: 4,
+  },
+  title: {
+    minHeight: 20,
+  },
+  price: {
+    marginVertical: 2,
+  },
+  actions: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: 6,
+  },
+  removeButton: {
+    paddingVertical: 6,
+    paddingHorizontal: 10,
+    borderRadius: 16,
+    gap: 4,
+    alignSelf: 'auto',
+  },
+  cartButton: {
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    borderRadius: 16,
+    gap: 4,
+    alignSelf: 'auto',
+  },
+  removeIcon: {
+    padding: 4,
+  },
+});
+
+export const ShoppingCartCardLayoutStyles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 12,
+    gap: 14,
+    borderRadius: 20,
+  },
+  cover: {
+    width: 76,
+    height: 76,
+    borderRadius: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 6,
+  },
+  image: {
+    width: '100%',
+    height: '100%',
+  },
+  content: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  title: {
+    lineHeight: 20,
+  },
+  subtitle: {
+    marginTop: 2,
+    lineHeight: 16,
+  },
+  footer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: 10,
+  },
+  pricePill: {
+    borderWidth: 1.5,
+    borderRadius: 20,
+    paddingVertical: 4,
+    paddingHorizontal: 14,
+    alignSelf: 'flex-start',
+  },
+  controls: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
+  quantityPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderRadius: 16,
+    paddingVertical: 4,
+    paddingHorizontal: 10,
+    gap: 4,
+  },
+  removeIcon: {
+    padding: 4,
+  },
+});
+

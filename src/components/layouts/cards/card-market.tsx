@@ -7,10 +7,44 @@ import useSkin from '@/services/hooks/useSkin';
 import { MarketCardLayoutStyles } from '@/styles/components/layouts';
 import { CardUi } from '@/components/ui/card';
 import { ButtonUi } from '@/components/ui/button';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/context/store';
+import {
+  onAddToCart,
+  onAddToFavorites,
+  onRemoveToFavorites,
+} from '@/context/store/reducers/market';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '@/models/types/navigation';
 
 const MarketCardLayout: FC<CatalogItem> = props => {
-  const { label, image, amount, tags } = props;
+  const { value, label, image, amount, tags } = props;
+
+  const dispatch = useDispatch();
+
   const { skin } = useSkin();
+  const { navigate } = useNavigation<NavigationProp<RootStackParamList>>();
+
+  const marketStore = useSelector((store: RootState) => store.market);
+
+  const isFavorite = !!marketStore.favorites.find(x => x.value === value);
+  const isInCart = !!marketStore.shoppingCart.find(x => x.value === value);
+
+  const handleFavorite = () => {
+    if (isFavorite) {
+      dispatch(onRemoveToFavorites(value));
+    } else {
+      dispatch(onAddToFavorites(props));
+    }
+  };
+
+  const handleShoppingCart = () => {
+    if (isInCart) {
+      navigate('ShoppingCart');
+    } else {
+      dispatch(onAddToCart(props));
+    }
+  };
 
   return (
     <CardUi style={MarketCardLayoutStyles.container}>
@@ -21,7 +55,12 @@ const MarketCardLayout: FC<CatalogItem> = props => {
         ]}
       >
         <View style={MarketCardLayoutStyles.favorite}>
-          <IconUi name="bx-heart" color="info" />
+          <IconUi
+            name="bx-heart"
+            variant={isFavorite ? 'filled' : 'basic'}
+            color="info"
+            onPress={handleFavorite}
+          />
         </View>
 
         {image ? (
@@ -63,10 +102,17 @@ const MarketCardLayout: FC<CatalogItem> = props => {
           {label}
         </TypographyUi>
 
-        <ButtonUi variant="inverted" style={[MarketCardLayoutStyles.inCart]}>
-          <IconUi name="bx-basket" color="info" />
-          <TypographyUi size="paragraph" weight="medium" color="info">
-            {`$${amount}`}
+        <ButtonUi
+          variant={isInCart ? 'normal' : 'inverted'}
+          style={MarketCardLayoutStyles.inCart}
+          onPress={handleShoppingCart}
+        >
+          <IconUi
+            name={isInCart ? 'bx-check' : 'bx-basket'}
+            color={isInCart ? 'inverted' : 'info'}
+          />
+          <TypographyUi weight="medium" color={isInCart ? 'inverted' : 'info'}>
+            {isInCart ? 'In cart' : `$${amount}`}
           </TypographyUi>
         </ButtonUi>
       </View>
