@@ -16,3 +16,17 @@ export const GetFakeStoreProductDetailService = (id: string) =>
     cache: true,
   });
 
+export const TransformFakeStoreProductsToCatalogService = (
+  products: FakeStoreProduct[],
+) => {
+  return {
+    total: products.length,
+    items: products.map(product => ({
+      value: product.id,
+      label: product.title,
+      tags: [product.category],
+      image: product.image,
+      amount: product.price,
+    })),
+  };
+};

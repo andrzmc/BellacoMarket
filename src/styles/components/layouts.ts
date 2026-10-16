@@ -70,3 +70,46 @@ export const FloatTabBarLayoutStyles = StyleSheet.create({
   },
 });
 
+export const MarketCardLayoutStyles = StyleSheet.create({
+  container: {
+    paddingTop: 0,
+    paddingLeft: 0,
+    paddingRight: 0,
+  },
+  cover: {
+    height: 145,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 12,
+    position: 'relative',
+  },
+  image: {
+    width: '70%',
+    height: '70%',
+  },
+  favorite: {
+    position: 'absolute',
+    top: 20,
+    right: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  content: {
+    padding: 20,
+    alignItems: 'center',
+    gap: 12,
+  },
+  tags: {
+    paddingVertical: 2,
+    paddingHorizontal: 8,
+    borderRadius: 10,
+  },
+  title: {
+    textAlign: 'center',
+    minHeight: 36,
+  },
+  inCart: {
+    alignSelf: 'auto',
+  },
+});

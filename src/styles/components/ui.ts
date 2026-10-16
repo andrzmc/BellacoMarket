@@ -15,6 +15,7 @@ export const ButtonUiStyles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'row',
     alignSelf: 'flex-start',
+    gap: 12,
   },
   disabled: {
     opacity: 0.5,
@@ -23,14 +24,13 @@ export const ButtonUiStyles = StyleSheet.create({
 
 export const CardUiStyles = StyleSheet.create({
   container: {
-    overflow: 'hidden',
     padding: 16,
     borderRadius: 12,
     gap: 10,
-    shadowOpacity: 0.05,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 8,
-    elevation: 2,
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 4 },
+    shadowRadius: 10,
+    elevation: 3,
   },
   shape_rounded: {
     borderRadius: 16,

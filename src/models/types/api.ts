@@ -13,3 +13,4 @@ export type QueryParams = Record<
 >;
 
 export type ApiHeaders = Record<string, string>;
+
