@@ -5,6 +5,7 @@ export type RootStackParamList = {
   Favorites: undefined;
   ShoppingCart: undefined;
   StoryBook: NavigatorScreenParams<StoryBookStackParamList>;
+  Product: { id: string | number };
 };
 
 export type StoryBookStackParamList = {

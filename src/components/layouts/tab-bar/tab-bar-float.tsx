@@ -23,6 +23,16 @@ const FloatTabBarLayout: FC<FloatTabBarLayoutProps> = props => {
 
   const { skin } = useSkin();
 
+  const currentRoute = state.routes[state.index];
+  const currentOptions = descriptors[currentRoute.key]?.options;
+
+  if (
+    currentOptions?.tabBarStyle &&
+    (currentOptions.tabBarStyle as any).display === 'none'
+  ) {
+    return null;
+  }
+
   const containerStyle = {
     backgroundColor: skin.card.background,
     shadowColor: skin.card.shadowColor,
@@ -33,6 +43,15 @@ const FloatTabBarLayout: FC<FloatTabBarLayoutProps> = props => {
     <View style={[FloatTabBarLayoutStyles.container, containerStyle]}>
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
+
+        if (
+          (options.tabBarItemStyle as any)?.display === 'none' ||
+          (typeof options.tabBarButton === 'function' &&
+            options.tabBarButton({} as any) === null)
+        ) {
+          return null;
+        }
+
         const isFocused = state.index === index;
 
         const label =

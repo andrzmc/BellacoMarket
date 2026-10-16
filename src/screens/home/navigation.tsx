@@ -12,6 +12,7 @@ import FavoritesHomeScreen from './favorites';
 import ShoppingCartHomeScreen from './shopping-cart';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/context/store';
+import ProductHomeScreen from './product';
 
 const RootNavigation: FC = () => {
   const Tab = createBottomTabNavigator();
@@ -78,6 +79,14 @@ const RootNavigation: FC = () => {
         options={{
           tabBarLabel: 'UI Kit',
           tabBarIcon: renderStoryBookTabIcon,
+        }}
+      />
+
+      <Tab.Screen
+        name="Product"
+        component={ProductHomeScreen}
+        options={{
+          tabBarButton: () => null,
         }}
       />
     </Tab.Navigator>

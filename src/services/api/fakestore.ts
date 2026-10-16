@@ -9,7 +9,7 @@ export const GetFakeStoreProductsService = () =>
     cache: true,
   });
 
-export const GetFakeStoreProductDetailService = (id: string) =>
+export const GetFakeStoreProductDetailService = (id: string | number) =>
   ApiInterceptorService<FakeStoreProduct>({
     baseUrl: FAKE_STORE_API_SERVICE_CONFIG,
     path: `/products/${id}`,
