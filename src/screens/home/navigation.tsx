@@ -8,20 +8,34 @@ import {
 import React, { FC } from 'react';
 import StoryBookNavigation from '../storybook/navigation';
 import MainHomeScreen from './main';
+import FavoritesHomeScreen from './favorites';
+import ShoppingCartHomeScreen from './shopping-cart';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/context/store';
 
 const RootNavigation: FC = () => {
   const Tab = createBottomTabNavigator();
 
-  const renderTabBar = (props: BottomTabBarProps) => (
-    <FloatTabBarLayout {...props} />
+  const marketStore = useSelector((store: RootState) => store.market);
+
+  const renderTabBar = (value: BottomTabBarProps) => (
+    <FloatTabBarLayout {...value} />
   );
 
-  const renderHomeTabIcon = (props: TabBarCustomIconProps) => (
-    <IconTabBarLayout {...props} name="bx-home" />
+  const renderHomeTabIcon = (value: TabBarCustomIconProps) => (
+    <IconTabBarLayout {...value} name="bx-home" />
   );
 
-  const renderStoryBookTabIcon = (props: TabBarCustomIconProps) => (
-    <IconTabBarLayout {...props} name="bx-layout" />
+  const renderFavoritesTabIcon = (value: TabBarCustomIconProps) => (
+    <IconTabBarLayout {...value} name="bx-heart" />
+  );
+
+  const renderShoppingCartTabIcon = (value: TabBarCustomIconProps) => (
+    <IconTabBarLayout {...value} name="bx-cart" />
+  );
+
+  const renderStoryBookTabIcon = (value: TabBarCustomIconProps) => (
+    <IconTabBarLayout {...value} name="bx-layout" />
   );
 
   return (
@@ -36,15 +50,33 @@ const RootNavigation: FC = () => {
         name="Main"
         component={MainHomeScreen}
         options={{
-          tabBarLabel: 'Home',
+          tabBarLabel: 'Market',
           tabBarIcon: renderHomeTabIcon,
+        }}
+      />
+      <Tab.Screen
+        name="Favorites"
+        component={FavoritesHomeScreen}
+        options={{
+          tabBarLabel: 'My favorites',
+          tabBarIcon: renderFavoritesTabIcon,
+          tabBarBadge: marketStore.favorites.length || undefined,
+        }}
+      />
+      <Tab.Screen
+        name="ShoppingCart"
+        component={ShoppingCartHomeScreen}
+        options={{
+          tabBarLabel: 'Shopping cart',
+          tabBarIcon: renderShoppingCartTabIcon,
+          tabBarBadge: marketStore.shoppingCart.length || undefined,
         }}
       />
       <Tab.Screen
         name="StoryBook"
         component={StoryBookNavigation}
         options={{
-          tabBarLabel: 'Storybook',
+          tabBarLabel: 'UI Kit',
           tabBarIcon: renderStoryBookTabIcon,
         }}
       />

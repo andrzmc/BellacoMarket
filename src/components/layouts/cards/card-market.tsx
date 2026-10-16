@@ -12,9 +12,10 @@ import { RootState } from '@/context/store';
 import {
   onAddToCart,
   onAddToFavorites,
-  onRemoveToCart,
   onRemoveToFavorites,
 } from '@/context/store/reducers/market';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '@/models/types/navigation';
 
 const MarketCardLayout: FC<CatalogItem> = props => {
   const { value, label, image, amount, tags } = props;
@@ -22,6 +23,7 @@ const MarketCardLayout: FC<CatalogItem> = props => {
   const dispatch = useDispatch();
 
   const { skin } = useSkin();
+  const { navigate } = useNavigation<NavigationProp<RootStackParamList>>();
 
   const marketStore = useSelector((store: RootState) => store.market);
 
@@ -38,7 +40,7 @@ const MarketCardLayout: FC<CatalogItem> = props => {
 
   const handleShoppingCart = () => {
     if (isInCart) {
-      dispatch(onRemoveToCart(value));
+      navigate('ShoppingCart');
     } else {
       dispatch(onAddToCart(props));
     }
@@ -101,12 +103,15 @@ const MarketCardLayout: FC<CatalogItem> = props => {
         </TypographyUi>
 
         <ButtonUi
-          variant="inverted"
-          style={[MarketCardLayoutStyles.inCart]}
+          variant={isInCart ? 'normal' : 'inverted'}
+          style={MarketCardLayoutStyles.inCart}
           onPress={handleShoppingCart}
         >
-          {!isInCart ? <IconUi name="bx-basket" color="info" /> : null}
-          <TypographyUi size="paragraph" weight="medium" color="info">
+          <IconUi
+            name={isInCart ? 'bx-check' : 'bx-basket'}
+            color={isInCart ? 'inverted' : 'info'}
+          />
+          <TypographyUi weight="medium" color={isInCart ? 'inverted' : 'info'}>
             {isInCart ? 'In cart' : `$${amount}`}
           </TypographyUi>
         </ButtonUi>
