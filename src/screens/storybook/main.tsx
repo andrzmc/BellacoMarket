@@ -4,15 +4,15 @@ import { CardUi } from '@/components/ui/card';
 import { IconUi } from '@/components/ui/icon';
 import { TypographyUi } from '@/components/ui/typography';
 import useSkin from '@/services/hooks/useSkin';
-import React from 'react';
+import React, { FC } from 'react';
 import { Alert } from 'react-native';
 
-const MainStoryBookScreen = () => {
+const MainStoryBookScreen: FC = () => {
   const { skin } = useSkin();
 
   return (
     <ScreenLayout header={{ title: 'BellacoMarket UI' }} scrollable>
-      <CardUi heading="TypographyUi - Tamaños">
+      <CardUi heading="TypographyUi - Sizes">
         <TypographyUi size="title" weight="bold">
           Title (Bold)
         </TypographyUi>
@@ -23,7 +23,7 @@ const MainStoryBookScreen = () => {
         <TypographyUi size="small">Small text helper</TypographyUi>
       </CardUi>
 
-      <CardUi heading="TypographyUi - Colores Semánticos">
+      <CardUi heading="TypographyUi - Semantic Colors">
         <TypographyUi color="normal">Color Normal</TypographyUi>
         <TypographyUi color="info">Color Info</TypographyUi>
         <TypographyUi color="success">Color Success</TypographyUi>
@@ -31,7 +31,7 @@ const MainStoryBookScreen = () => {
         <TypographyUi color="error">Color Error</TypographyUi>
       </CardUi>
 
-      <CardUi heading="ButtonUi - Variantes de Fondo">
+      <CardUi heading="ButtonUi - Background Variants">
         <ButtonUi text="Variant Normal" variant="normal" />
         <ButtonUi text="Variant Info" variant="info" />
         <ButtonUi text="Variant Success" variant="success" />
@@ -39,8 +39,8 @@ const MainStoryBookScreen = () => {
         <ButtonUi text="Variant Error" variant="error" />
       </CardUi>
 
-      <CardUi heading="ButtonUi - Estados y Contenido">
-        <ButtonUi text="Botón Deshabilitado" variant="info" disabled />
+      <CardUi heading="ButtonUi - States & Content">
+        <ButtonUi text="Disabled Button" variant="info" disabled />
         <ButtonUi
           variant="inverted"
           style={{ borderWidth: 1, borderColor: skin.info }}
@@ -51,7 +51,7 @@ const MainStoryBookScreen = () => {
         </ButtonUi>
       </CardUi>
 
-      <CardUi heading="IconUi - Variantes">
+      <CardUi heading="IconUi - Variants">
         <IconUi name="bx-heart" />
         <TypographyUi>Basic</TypographyUi>
         <IconUi variant="filled" name="bx-heart" />
@@ -60,13 +60,13 @@ const MainStoryBookScreen = () => {
         <TypographyUi>Brands</TypographyUi>
       </CardUi>
 
-      <CardUi heading="IconUi - Tamaños">
+      <CardUi heading="IconUi - Sizes">
         <IconUi size={24} variant="brands" name="bx-github" />
         <IconUi size={32} variant="brands" name="bx-github" />
         <IconUi size={40} variant="brands" name="bx-github" />
       </CardUi>
 
-      <CardUi heading="IconUi - Colores">
+      <CardUi heading="IconUi - Colors">
         <IconUi color="normal" variant="brands" name="bx-github" />
         <IconUi color="info" variant="brands" name="bx-github" />
         <IconUi color="success" variant="brands" name="bx-github" />
@@ -75,7 +75,7 @@ const MainStoryBookScreen = () => {
         <IconUi colorCode="brown" variant="brands" name="bx-github" />
       </CardUi>
 
-      <CardUi heading="IconUi - Estados">
+      <CardUi heading="IconUi - States">
         <IconUi disabled variant="brands" name="bx-github" />
         <TypographyUi>Disabled</TypographyUi>
         <IconUi
@@ -83,10 +83,11 @@ const MainStoryBookScreen = () => {
           variant="brands"
           name="bx-github"
         />
-        <TypographyUi>With action</TypographyUi>
+        <TypographyUi>With Action</TypographyUi>
       </CardUi>
     </ScreenLayout>
   );
 };
 
 export default MainStoryBookScreen;
+
