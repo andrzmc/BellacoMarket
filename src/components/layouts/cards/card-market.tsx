@@ -9,7 +9,7 @@ import { CardUi } from '@/components/ui/card';
 import { ButtonUi } from '@/components/ui/button';
 
 const MarketCardLayout: FC<CatalogItem> = props => {
-  const { label, image, amount } = props;
+  const { label, image, amount, tags } = props;
   const { skin } = useSkin();
 
   return (
@@ -33,7 +33,27 @@ const MarketCardLayout: FC<CatalogItem> = props => {
         ) : null}
       </View>
 
-      <View style={MarketCardLayoutStyles.contentContainer}>
+      <View style={MarketCardLayoutStyles.content}>
+        {tags?.length ? (
+          <>
+            {tags.map((tag, index) => (
+              <TypographyUi
+                key={index}
+                size="small"
+                weight="bold"
+                style={[
+                  MarketCardLayoutStyles.tags,
+                  {
+                    backgroundColor: skin.text.paragraph,
+                    color: skin.text.inverted,
+                  },
+                ]}
+              >
+                {tag}
+              </TypographyUi>
+            ))}
+          </>
+        ) : null}
         <TypographyUi
           size="paragraph"
           weight="medium"
@@ -43,15 +63,7 @@ const MarketCardLayout: FC<CatalogItem> = props => {
           {label}
         </TypographyUi>
 
-        <ButtonUi
-          variant="inverted"
-          style={[
-            MarketCardLayoutStyles.inCart,
-            {
-              borderColor: skin.info,
-            },
-          ]}
-        >
+        <ButtonUi variant="inverted" style={[MarketCardLayoutStyles.inCart]}>
           <IconUi name="bx-basket" color="info" />
           <TypographyUi size="paragraph" weight="medium" color="info">
             {`$${amount}`}

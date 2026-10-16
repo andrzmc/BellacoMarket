@@ -85,8 +85,8 @@ export const MarketCardLayoutStyles = StyleSheet.create({
     position: 'relative',
   },
   image: {
-    width: '80%',
-    height: '80%',
+    width: '70%',
+    height: '70%',
   },
   favorite: {
     position: 'absolute',
@@ -95,18 +95,21 @@ export const MarketCardLayoutStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  contentContainer: {
+  content: {
     padding: 20,
     alignItems: 'center',
     gap: 12,
+  },
+  tags: {
+    paddingVertical: 2,
+    paddingHorizontal: 8,
+    borderRadius: 10,
   },
   title: {
     textAlign: 'center',
     minHeight: 36,
   },
   inCart: {
-    borderWidth: 1,
     alignSelf: 'auto',
-    gap: 12,
   },
 });

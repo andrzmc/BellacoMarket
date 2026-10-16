@@ -15,6 +15,7 @@ export const ButtonUiStyles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'row',
     alignSelf: 'flex-start',
+    gap: 12,
   },
   disabled: {
     opacity: 0.5,

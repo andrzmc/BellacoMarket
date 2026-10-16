@@ -18,6 +18,15 @@ export const ButtonUi: FC<ButtonUiProps> = props => {
 
   const { skin } = useSkin();
 
+  const buttonStyles = {
+    backgroundColor: skin.text[variant !== 'normal' ? variant : 'paragraph'],
+    borderWidth: 1,
+    borderColor:
+      variant === 'inverted'
+        ? skin.text.info
+        : skin.text[variant !== 'normal' ? variant : 'paragraph'],
+  };
+
   return (
     <TouchableOpacity
       disabled={disabled}
@@ -25,17 +34,17 @@ export const ButtonUi: FC<ButtonUiProps> = props => {
       style={[
         ButtonUiStyles.container,
         disabled && ButtonUiStyles.disabled,
-        {
-          backgroundColor:
-            skin.text[variant !== 'normal' ? variant : 'paragraph'],
-        },
+        buttonStyles,
         style,
       ]}
       {...rest}
     >
       {children ??
         (text ? (
-          <TypographyUi weight="bold" color="inverted">
+          <TypographyUi
+            weight="bold"
+            color={variant === 'inverted' ? 'info' : 'inverted'}
+          >
             {text}
           </TypographyUi>
         ) : null)}
