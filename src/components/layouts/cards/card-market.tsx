@@ -47,7 +47,10 @@ const MarketCardLayout: FC<CatalogItem> = props => {
   };
 
   return (
-    <CardUi style={MarketCardLayoutStyles.container}>
+    <CardUi
+      style={MarketCardLayoutStyles.container}
+      onPress={() => navigate('Product', { id: value })}
+    >
       <View
         style={[
           MarketCardLayoutStyles.cover,
