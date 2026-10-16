@@ -13,7 +13,7 @@
 
 |                                  Market Catalog                                  |                                   My Favorites                                    |                           Shopping Cart & Checkout                            |
 | :------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------: | :---------------------------------------------------------------------------: |
-| <img src="./docs//preview-market.png" width="260" alt="Market Catalog Screen" /> | <img src="./docs//preview-favorites.png" width="260" alt="My Favorites Screen" /> | <img src="./docs//preview-cart.png" width="260" alt="Shopping Cart Screen" /> |
+| <img src="./docs/preview-market.png" width="260" alt="Market Catalog Screen" /> | <img src="./docs/preview-favorites.png" width="260" alt="My Favorites Screen" /> | <img src="./docs/preview-cart.png" width="260" alt="Shopping Cart Screen" /> |
 
 ---
 
