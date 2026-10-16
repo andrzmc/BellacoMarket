@@ -28,6 +28,9 @@ export const marketSlice = createSlice({
         item => item.value !== action.payload,
       );
     },
+    onClearCart: state => {
+      state.shoppingCart = [];
+    },
   },
 });
 
@@ -36,6 +39,7 @@ export const {
   onRemoveToCart,
   onAddToFavorites,
   onRemoveToFavorites,
+  onClearCart,
 } = marketSlice.actions;
 
 export default marketSlice.reducer;
